@@ -403,6 +403,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 }//printf("\n");
 
             }
+            player.cordy -= 40;
         }
         break;
 
