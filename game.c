@@ -116,11 +116,11 @@ int game()
     background = al_load_sample("fairy1.wav");
     al_play_sample(background, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
 
-    int girl_life = 500;
+    int girl_life = 100;
     int bat_life = 100;
-    int skull_life = 200;
-    int boss2_life = 3000;
-    int boss3_life = 5000;
+    int skull_life = 100;
+    int boss2_life = 100;
+    int boss3_life = 100;
 
 
     player.num_key=0;

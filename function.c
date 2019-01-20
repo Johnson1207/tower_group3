@@ -343,7 +343,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                     // printf("%d",map_store1.number[k][l]);
                 }//printf("\n");
             }
-            player.cordy -= 40;
+            player.cordx += 40;
         }
         break;
 
@@ -364,7 +364,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 printf("\n");
 
             }
-            player.cordy -= 40;
+            player.cordx += 40;
         }
         break;
 
