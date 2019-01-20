@@ -180,7 +180,7 @@ void swit(int **a,int **b,int**c, int k, int l,
           ALLEGRO_BITMAP* stair21, ALLEGRO_BITMAP* stair23, ALLEGRO_BITMAP* stair32, ALLEGRO_BITMAP* door,
           ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5,
           ALLEGRO_SAMPLE *mbeat,ALLEGRO_SAMPLE *mdoor,ALLEGRO_SAMPLE *mdrug,ALLEGRO_SAMPLE *mkey,ALLEGRO_SAMPLE *mshield,
-          ALLEGRO_SAMPLE *msnow,ALLEGRO_SAMPLE *msword)
+          ALLEGRO_SAMPLE *msnow,ALLEGRO_SAMPLE *msword, int girl_life, int bat_life, int skull_life, int boss2_life, int boss3_life)
 {
     switch(a[k][l])
     {
@@ -199,7 +199,6 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.num_red += 1;
             player.life += 30;
 
             a[k][l] = 0;
@@ -211,7 +210,6 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.num_blue += 1;
             player.life += 50;
 
             a[k][l] = 0;
@@ -243,7 +241,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
-                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     if(player.def > girl.attack)
                     {
                         player.life = player.life;
@@ -271,6 +269,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(girl.life <= 0)
             {
                 //player.win += 1;
+                girl.life = girl_life;
                 a[k][l] = 0;
             }
         }
@@ -282,8 +281,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(msword, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.num_sword += 1;
-            player.attack += 10;
+            player.attack += 50;
 
             a[k][l] = 0;
         }
@@ -294,8 +292,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(msnow, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.num_snow += 1;
-            player.attack += 20;
+            player.attack += 10;
 
             a[k][l] = 0;
         }
@@ -306,7 +303,6 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mshield, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.num_shield += 1;
             player.def += 10;
 
             a[k][l] = 0;
@@ -423,7 +419,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
-                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     if(player.def > bat.attack)
                     {
                         player.life = player.life;
@@ -451,7 +447,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(bat.life <= 0)
             {
                 //player.win += 1;
-                bat.life = 50;
+                bat.life = bat_life;
                 a[k][l] = 0;
             }
         }
@@ -472,7 +468,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
-                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     if(player.def > skull.attack)
                     {
                         player.life = player.life;
@@ -500,7 +496,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(skull.life <= 0)
             {
                 //player.win += 1;
-                skull.life = 100;
+                skull.life = skull_life;
                 a[k][l] = 0;
             }
         }
@@ -521,7 +517,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
-                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     if(player.def > boss2.attack)
                     {
                         player.life = player.life;
@@ -549,7 +545,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(boss2.life <= 0)
             {
                 //player.win += 1;
-                boss2.life = 200;
+                boss2.life = boss2_life;
                 a[k][l] = 0;
             }
         }
@@ -570,7 +566,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
-                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
+
                     if(player.def > boss3.attack)
                     {
                         player.life = player.life;
@@ -598,7 +594,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(boss3.life <= 0)
             {
                 player.win += 1;
-                boss3.life = 5000;
+                boss3.life = boss3_life;
                 a[k][l] = 0;
             }
         }
@@ -611,9 +607,6 @@ void swit(int **a,int **b,int**c, int k, int l,
 void move_pg(ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_BITMAP *pg)
 {
 
-
-    if(player.energy>0)
-    {
         if (al_key_down(&KBstate, ALLEGRO_KEY_LEFT))
         {
             player.moves += 1;
@@ -635,7 +628,7 @@ void move_pg(ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_BITMAP *pg)
             player.cordy += MOVE;
         }
 
-    }
+
 
 
     if (player.cordx < 0)
@@ -725,7 +718,7 @@ int use_item_shield(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
 }*/
 
 
-void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
+void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_SAMPLE *mbeat)
 {
     switch(player.times)
     {
@@ -744,6 +737,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
                     girl.life=girl.life-(player.attack-girl.def);
                 }
                 girl.times=1;//attack girl 1 time
+                al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             }
             break;
         }
@@ -763,6 +757,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
                     bat.life=bat.life-(player.attack-bat.def);
                 }
                 bat.times=1;//attack bat 1 time
+                al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             }
             break;
         }
@@ -782,6 +777,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
                     skull.life=skull.life-(player.attack-skull.def);
                 }
                 skull.times=1;//attack skull 1 time
+                al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             }
             break;
         }
@@ -801,6 +797,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
                     boss2.life=boss2.life-(player.attack-boss2.def);
                 }
                 boss2.times=1;//attack boss2 1 time
+                al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             }
             break;
         }
@@ -820,6 +817,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
                     boss3.life=boss3.life-(player.attack-boss3.def);
                 }
                 boss3.times=1;//attack boss3 1 time
+                al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             }
             break;
         }
@@ -827,7 +825,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
 }
 
 
-void run_out_of_energy()
+/*void run_out_of_energy()
 {
     printf("%d\n",player.moves);
     if(player.moves==1000)
@@ -835,7 +833,7 @@ void run_out_of_energy()
         player.energy-=2;
         player.moves=0;
     }
-}
+}*/
 
 void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
 {
@@ -844,15 +842,15 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
 
     al_draw_textf( pongFont, al_map_rgb(0,0,0), 750,0, -1, " LEVEL %d", player.level);
     al_draw_textf( pongFont, al_map_rgb(255, 0,0), 750,20, -1, " life: %d", player.life);
-    al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 750,40, -1, " energy: %d", player.energy);
-    al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 750,60, -1, " ATK: %d", player.attack);
-    al_draw_textf( pongFont, al_map_rgb(0,0, 255), 750,80, -1, " DEF: %d", player.def);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 750,40, -1, " energy: %d", player.energy);
+    al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 750,40, -1, " ATK: %d", player.attack);
+    al_draw_textf( pongFont, al_map_rgb(0,0, 255), 750,60, -1, " DEF: %d", player.def);
     //al_draw_textf( pongFont, al_map_rgb(255, 255,255), 620,100, -1, " Red Drug: %d", player.num_red);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,120, -1, " Blue Drug: %d", player.num_blue);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,140, -1, " Sword: %d", player.num_sword);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,160, -1, " Snow: %d", player.num_snow);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,180, -1, " Shield: %d", player.num_shield);
-    al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 750,100, -1, " Key: %d", player.num_key);
+    al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 750,80, -1, " Key: %d", player.num_key);
     al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,120, -1, " Win: %d", player.win);
     al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,140,-1, " Lose: %d", player.lose);
 

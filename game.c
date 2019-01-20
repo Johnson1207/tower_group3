@@ -116,12 +116,14 @@ int game()
     background = al_load_sample("fairy1.wav");
     al_play_sample(background, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
 
-    player.num_blue=0;
+    int girl_life = 500;
+    int bat_life = 100;
+    int skull_life = 200;
+    int boss2_life = 3000;
+    int boss3_life = 5000;
+
+
     player.num_key=0;
-    player.num_red=0;
-    player.energy=10;
-    player.num_snow=0;
-    player.num_sword=0;
     player.win=0;
     player.lose=0;
     player.times=0;
@@ -132,27 +134,27 @@ int game()
     player.attack=20;
     player.def=20;
 
-    girl.life=500;
+    girl.life=girl_life;
     girl.attack=100;
     girl.times=0;
     girl.def=100;
 
-    bat.life=50;
+    bat.life=bat_life;
     bat.attack=30;
     bat.times=0;
     bat.def=15;
 
-    skull.life=100;
+    skull.life=skull_life;
     skull.attack=80;
     skull.times=0;
     skull.def=50;
 
-    boss2.life=1000;
+    boss2.life=boss2_life;
     boss2.attack=150;
     boss2.times=0;
     boss2.def=200;
 
-    boss3.life=1500;
+    boss3.life=boss3_life;
     boss3.attack=500;
     boss3.times=0;
     boss3.def=100;
@@ -187,23 +189,23 @@ int game()
                     switch(player.times)
                     {
                     case 1:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 2:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 3:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 4:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 5:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
                     }
                     break;
@@ -220,7 +222,8 @@ int game()
                      key, red, stone, blue, monster1, fight, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
                      stair32, door, monster2, monster3, monster4, monster5,
-                     mbeat,mdoor,mdrug,mkey,mshield,msnow,msword);
+                     mbeat,mdoor,mdrug,mkey,mshield,msnow,msword,
+                     girl_life, bat_life, skull_life, boss2_life, boss3_life);
             }
         }
 
@@ -229,7 +232,6 @@ int game()
 
         move_pg(KBstate, pg);
         print(pongFont, pg);
-        run_out_of_energy();
 
 
         if(player.lose == 1)
