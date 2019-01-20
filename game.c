@@ -42,6 +42,8 @@ int game()
     ALLEGRO_BITMAP *monster3 = NULL;
     ALLEGRO_BITMAP *monster4 = NULL;
     ALLEGRO_BITMAP *monster5 = NULL;
+    ALLEGRO_BITMAP *gameover = NULL;
+    ALLEGRO_BITMAP *youwin = NULL;
 
     ALLEGRO_SAMPLE *background = NULL; // pointer to sound file
     ALLEGRO_FONT *pongFont = NULL; // pointer to Font file
@@ -92,6 +94,8 @@ int game()
     monster5= al_load_bitmap("./boss3.png");
     fight= al_load_bitmap("./fight.png");
     bitmap_map = al_load_bitmap("./ice.jpg");
+    gameover = al_load_bitmap("./gameover.jpg");
+    youwin = al_load_bitmap("./youwin.jpg");
 
     pongFont = al_load_ttf_font("arial.ttf", 18, 0);
 
@@ -101,42 +105,43 @@ int game()
     player.num_blue=0;
     player.num_key=0;
     player.num_red=0;
-    player.life=10;
     player.energy=10;
     player.num_snow=0;
-    player.attack=3;
     player.num_sword=0;
     player.win=0;
     player.lose=0;
     player.times=0;
-    player.def=1;
     player.level=1;
     player.moves=0;
 
-    girl.life=20;
-    girl.attack=3;
+    player.life=1000;
+    player.attack=20;
+    player.def=20;
+
+    girl.life=500;
+    girl.attack=100;
     girl.times=0;
-    girl.def=6;
+    girl.def=100;
 
     bat.life=50;
-    bat.attack=6;
+    bat.attack=30;
     bat.times=0;
-    bat.def=6;
+    bat.def=15;
 
     skull.life=100;
-    skull.attack=15;
+    skull.attack=80;
     skull.times=0;
-    skull.def=10;
+    skull.def=50;
 
-    boss2.life=200;
-    boss2.attack=30;
+    boss2.life=1000;
+    boss2.attack=150;
     boss2.times=0;
-    boss2.def=50;
+    boss2.def=200;
 
-    boss3.life=1000;
-    boss3.attack=100;
+    boss3.life=5000;
+    boss3.attack=500;
     boss3.times=0;
-    boss3.def=100;
+    boss3.def=500;
 
 
     // do event registration
@@ -212,7 +217,12 @@ int game()
         run_out_of_energy();
 
 
+        if(player.lose == 1)
+        {
+            run = 0;
 
+            break;
+        }
 
 
 
@@ -225,6 +235,27 @@ int game()
         // Clear the complete target bitmap, but confined by the clipping rectangle.
     }
 
+    while(player.lose = 1)
+    {
+        al_draw_bitmap(gameover, 0, 0, 0);
+        al_draw_textf( pongFont, al_map_rgb(55, 55, 255), 330, 400, -1, "Press ESC to close.");
+
+        al_get_keyboard_state(&KBstate);
+        if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
+            break;
+
+    }
+
+        while(player.win = 1)
+    {
+        al_draw_bitmap(youwin, 0, 0, 0);
+        al_draw_textf( pongFont, al_map_rgb(55, 55, 255), 330, 400, -1, "Press ESC to close.");
+
+        al_get_keyboard_state(&KBstate);
+        if (al_key_down(&KBstate, ALLEGRO_KEY_ESCAPE))
+            break;
+
+    }
     // Flip display to show the drawing result
     al_flip_display();
     al_destroy_bitmap(attack);
@@ -249,6 +280,8 @@ int game()
     al_destroy_bitmap(monster5);
     al_destroy_bitmap(fight);
     al_destroy_bitmap(bitmap_map);
+    al_destroy_bitmap(gameover);
+    al_destroy_bitmap(youwin);
     al_destroy_display(display);
     al_destroy_event_queue(event_queue);
     al_destroy_sample(background); /* destroy the background sound file */

@@ -264,7 +264,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             }
             if(girl.life <= 0)
             {
-                player.win += 1;
+                //player.win += 1;
                 a[k][l] = 0;
             }
         }
@@ -438,7 +438,8 @@ void swit(int **a,int **b,int**c, int k, int l,
             }
             if(bat.life <= 0)
             {
-                player.win += 1;
+                //player.win += 1;
+                bat.life = 50;
                 a[k][l] = 0;
             }
         }
@@ -485,7 +486,8 @@ void swit(int **a,int **b,int**c, int k, int l,
             }
             if(skull.life <= 0)
             {
-                player.win += 1;
+                //player.win += 1;
+                skull.life = 100;
                 a[k][l] = 0;
             }
         }
@@ -532,7 +534,8 @@ void swit(int **a,int **b,int**c, int k, int l,
             }
             if(boss2.life <= 0)
             {
-                player.win += 1;
+                //player.win += 1;
+                boss2.life = 200;
                 a[k][l] = 0;
             }
         }
@@ -580,6 +583,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             if(boss3.life <= 0)
             {
                 player.win += 1;
+                boss3.life = 5000;
                 a[k][l] = 0;
             }
         }
@@ -631,7 +635,7 @@ void move_pg(ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_BITMAP *pg)
 }
 
 
-int use_item_red(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate, it player)
+/*int use_item_red(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate, it player)
 {
     if(player.num_red>0)
     {
@@ -703,17 +707,17 @@ int use_item_shield(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
             player.num_shield-=1;
         }
     }
-}
+}*/
 
 
 void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
 {
-    switch(player.number)
+    switch(player.times)
     {
     case 1:
         if((girl.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(girl.def>player.attack)
@@ -732,7 +736,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 2:
         if((bat.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(bat.def>player.attack)
@@ -748,10 +752,10 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
             break;
         }
 
-        case 3:
+    case 3:
         if((skull.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(skull.def>player.attack)
@@ -767,10 +771,10 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
             break;
         }
 
-        case 4:
+    case 4:
         if((boss2.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(boss2.def>player.attack)
@@ -786,10 +790,10 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
             break;
         }
 
-        case 5:
+    case 5:
         if((boss3.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(boss3.def>player.attack)
@@ -808,43 +812,43 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
 }
 
 
-    void run_out_of_energy()
+void run_out_of_energy()
+{
+    printf("%d\n",player.moves);
+    if(player.moves==1000)
     {
-        printf("%d\n",player.moves);
-        if(player.moves==1000)
-        {
-            player.energy-=2;
-            player.moves=0;
-        }
+        player.energy-=2;
+        player.moves=0;
     }
+}
 
-    void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
-    {
-        al_draw_bitmap(pg, player.cordx, player.cordy, 0);
+void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
+{
+    al_draw_bitmap(pg, player.cordx, player.cordy, 0);
 
 
-        al_draw_textf( pongFont, al_map_rgb(0,0,0), 7000,0, -1, " LEVEL %d", player.level);
-        al_draw_textf( pongFont, al_map_rgb(255, 0,0), 700,20, -1, " life: %d", player.life);
-        al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 700,40, -1, " energy: %d", player.energy);
-        al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 700,60, -1, " ATK: %d", player.attack);
-        al_draw_textf( pongFont, al_map_rgb(0,0, 255), 700,80, -1, " DEF: %d", player.def);
-        //al_draw_textf( pongFont, al_map_rgb(255, 255,255), 620,100, -1, " Red Drug: %d", player.num_red);
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,120, -1, " Blue Drug: %d", player.num_blue);
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,140, -1, " Sword: %d", player.num_sword);
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,160, -1, " Snow: %d", player.num_snow);
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,180, -1, " Shield: %d", player.num_shield);
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 700,200, -1, " Key: %d", player.num_key);
-        //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,220, -1, " Win: %d", player.win);
-        //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,240,-1, " Lose: %d", player.lose);
+    al_draw_textf( pongFont, al_map_rgb(0,0,0), 750,0, -1, " LEVEL %d", player.level);
+    al_draw_textf( pongFont, al_map_rgb(255, 0,0), 750,20, -1, " life: %d", player.life);
+    al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 750,40, -1, " energy: %d", player.energy);
+    al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 750,60, -1, " ATK: %d", player.attack);
+    al_draw_textf( pongFont, al_map_rgb(0,0, 255), 750,80, -1, " DEF: %d", player.def);
+    //al_draw_textf( pongFont, al_map_rgb(255, 255,255), 620,100, -1, " Red Drug: %d", player.num_red);
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,120, -1, " Blue Drug: %d", player.num_blue);
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,140, -1, " Sword: %d", player.num_sword);
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,160, -1, " Snow: %d", player.num_snow);
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,180, -1, " Shield: %d", player.num_shield);
+    al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 750,100, -1, " Key: %d", player.num_key);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,220, -1, " Win: %d", player.win);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,240,-1, " Lose: %d", player.lose);
 
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 280, 800, -1, "When you move,you will lose your energy.If energy=0,you can't move");
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 820, -1, "In the fight,You are the first to attack.");
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 840, -1, " And if you don't finish the fight,you can't move.");
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 860, -1, "Attack PRESS Z");
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 600, -1, "use red drug (life+1) PRESS R"  );
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200,620, -1, "use blue drug (energy+1) PRESS B ");
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 640, -1, "USE sword (ATK+2) PRESS S ");
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 660, -1, "USE snow (ATK*2) PRESS A");
-        //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 680, -1, "USE shield (DEF+2) PRESS D");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 280, 800, -1, "When you move,you will lose your energy.If energy=0,you can't move");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 820, -1, "In the fight,You are the first to attack.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 840, -1, " And if you don't finish the fight,you can't move.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 860, -1, "Attack PRESS Z");
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 600, -1, "use red drug (life+1) PRESS R"  );
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200,620, -1, "use blue drug (energy+1) PRESS B ");
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 640, -1, "USE sword (ATK+2) PRESS S ");
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 660, -1, "USE snow (ATK*2) PRESS A");
+    //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 680, -1, "USE shield (DEF+2) PRESS D");
 
-    }
+}
