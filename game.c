@@ -5,17 +5,6 @@
 
 int game()
 {
-    it player;
-
-    mon girl;
-
-    li map;
-    li map2;
-    li map3;
-    li map_store1;
-
-
-
     bool run=1;
     int j=0;
     map.number=form_matrix(ROWSIZE,COLSIZE);
@@ -48,7 +37,11 @@ int game()
     ALLEGRO_BITMAP *stair32 = NULL;//stair from map 3 to 2
     ALLEGRO_BITMAP *monster1 = NULL;
     ALLEGRO_BITMAP *fight = NULL;
-    ALLEGRO_BITMAP* bitmap_map = NULL;
+    ALLEGRO_BITMAP *bitmap_map = NULL;
+    ALLEGRO_BITMAP *monster2 = NULL;
+    ALLEGRO_BITMAP *monster3 = NULL;
+    ALLEGRO_BITMAP *monster4 = NULL;
+    ALLEGRO_BITMAP *monster5 = NULL;
 
     ALLEGRO_SAMPLE *background = NULL; // pointer to sound file
     ALLEGRO_FONT *pongFont = NULL; // pointer to Font file
@@ -58,8 +51,9 @@ int game()
 
     int k=0;
     int l=0;
-    player.cordx = 55;
-    player.cordy= 5;
+
+    player.cordx = 300;
+    player.cordy= 650;
 
 
 
@@ -92,8 +86,12 @@ int game()
     snow= al_load_bitmap("./snow.png");
     defend= al_load_bitmap("./shield.png");
     monster1= al_load_bitmap("./girl.png");
+    monster2= al_load_bitmap("./bat.png");
+    monster3= al_load_bitmap("./skull.png");
+    monster4= al_load_bitmap("./boss2.png");
+    monster5= al_load_bitmap("./boss3.png");
     fight= al_load_bitmap("./fight.png");
-    bitmap_map = al_load_bitmap("./back.jpg");
+    bitmap_map = al_load_bitmap("./ice.jpg");
 
     pongFont = al_load_ttf_font("arial.ttf", 18, 0);
 
@@ -120,6 +118,26 @@ int game()
     girl.times=0;
     girl.def=6;
 
+    bat.life=50;
+    bat.attack=6;
+    bat.times=0;
+    bat.def=6;
+
+    skull.life=100;
+    skull.attack=15;
+    skull.times=0;
+    skull.def=10;
+
+    boss2.life=200;
+    boss2.attack=30;
+    boss2.times=0;
+    boss2.def=50;
+
+    boss3.life=1000;
+    boss3.attack=100;
+    boss3.times=0;
+    boss3.def=100;
+
 
     // do event registration
     event_queue = al_create_event_queue();
@@ -145,16 +163,28 @@ int game()
                     if(events.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
                         run = 0;
 
-                    use_item_red(pongFont, KBstate, player);
-                    use_item_blue(pongFont, KBstate, player);
-                    use_item_sword(pongFont, KBstate, player);
-                    use_item_snow(pongFont, KBstate, player);
-                    use_item_shield(pongFont, KBstate, player);
+                    //move_pg(KBstate, pg);
 
                     switch(player.times)
                     {
                     case 1:
-                        atta(pongFont, KBstate, player, girl);
+                        atta(pongFont, KBstate);
+                        break;
+
+                    case 2:
+                        atta(pongFont, KBstate);
+                        break;
+
+                    case 3:
+                        atta(pongFont, KBstate);
+                        break;
+
+                    case 4:
+                        atta(pongFont, KBstate);
+                        break;
+
+                    case 5:
+                        atta(pongFont, KBstate);
                         break;
                     }
                     break;
@@ -170,15 +200,16 @@ int game()
                 swit(map.number, map.cordx, map.cordy, k, l,
                      key, red, stone, blue, monster1, fight, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
-                     stair32, door, map, map2, map3, map_store1, player, girl);
+                     stair32, door, monster2, monster3, monster4, monster5);
             }
         }
 
 
 
-        move_pg(pongFont, KBstate,pg, player);
 
-        run_out_of_energy(player);
+        move_pg(KBstate, pg);
+        print(pongFont, pg);
+        run_out_of_energy();
 
 
 
@@ -196,7 +227,6 @@ int game()
 
     // Flip display to show the drawing result
     al_flip_display();
-    system("pause");
     al_destroy_bitmap(attack);
     al_destroy_bitmap(beaten);
     al_destroy_bitmap(key);
@@ -213,6 +243,10 @@ int game()
     al_destroy_bitmap(sword);
     al_destroy_bitmap(snow);
     al_destroy_bitmap(monster1);
+    al_destroy_bitmap(monster2);
+    al_destroy_bitmap(monster3);
+    al_destroy_bitmap(monster4);
+    al_destroy_bitmap(monster5);
     al_destroy_bitmap(fight);
     al_destroy_bitmap(bitmap_map);
     al_destroy_display(display);

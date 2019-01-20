@@ -12,12 +12,9 @@
 
 
 #define MOVE 2
-#define SCREEN_W  680
-#define SCREEN_H  680
 
+#define ROWSIZE 13
+#define COLSIZE 13
 
-#define ROWSIZE 10
-#define COLSIZE 11
-
-#define DISPLAY_WIDTH   680
-#define DISPLAY_HEIGHT  720
+#define DISPLAY_WIDTH   800
+#define DISPLAY_HEIGHT  900

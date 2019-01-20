@@ -1,5 +1,6 @@
 #ifndef struct item
-typedef struct item{
+typedef struct item
+{
     int cordx;
     int cordy;
     int life;
@@ -22,12 +23,14 @@ typedef struct item{
     char name[20] ;
 
 
-}it;
+} it;
+it player;
 
 #endif
 
 #ifndef struct item
-typedef struct monster{
+typedef struct monster
+{
 
     int life;
     int attack;
@@ -36,7 +39,12 @@ typedef struct monster{
     char name[20] ;
 
 
-}mon;
+} mon;
+mon girl;
+mon bat;
+mon skull;
+mon boss2;
+mon boss3;
 
 #endif
 
@@ -51,6 +59,11 @@ typedef struct  line
     int **number;
 
 
-}li;
+} li;
+
+li map;
+li map2;
+li map3;
+li map_store1;
 
 #endif
