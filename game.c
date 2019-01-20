@@ -240,7 +240,7 @@ int game()
         // Clear the complete target bitmap, but confined by the clipping rectangle.
     }
 
-    while(player.lose = 1)
+    while(player.lose == 1)
     {
         al_flip_display();
         al_draw_bitmap(gameover, 0, 0, 0);
@@ -252,7 +252,7 @@ int game()
 
     }
 
-        while(player.win = 1)
+        while(player.win == 1)
     {
         al_flip_display();
         al_draw_bitmap(youwin, 0, 0, 0);

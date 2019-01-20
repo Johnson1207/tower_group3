@@ -838,8 +838,8 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,160, -1, " Snow: %d", player.num_snow);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,180, -1, " Shield: %d", player.num_shield);
     al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 750,100, -1, " Key: %d", player.num_key);
-    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,220, -1, " Win: %d", player.win);
-    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 620,240,-1, " Lose: %d", player.lose);
+    al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,120, -1, " Win: %d", player.win);
+    al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,140,-1, " Lose: %d", player.lose);
 
     al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 280, 800, -1, "When you move,you will lose your energy.If energy=0,you can't move");
     al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 820, -1, "In the fight,You are the first to attack.");
