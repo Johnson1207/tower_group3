@@ -45,7 +45,14 @@ int game()
     ALLEGRO_BITMAP *gameover = NULL;
     ALLEGRO_BITMAP *youwin = NULL;
 
-    ALLEGRO_SAMPLE *background = NULL; // pointer to sound file
+    ALLEGRO_SAMPLE *background = NULL;
+    ALLEGRO_SAMPLE *mbeat = NULL;
+    ALLEGRO_SAMPLE *mdoor = NULL;
+    ALLEGRO_SAMPLE *mdrug = NULL;
+    ALLEGRO_SAMPLE *mkey = NULL;
+    ALLEGRO_SAMPLE *mshield = NULL;
+    ALLEGRO_SAMPLE *msnow = NULL;
+    ALLEGRO_SAMPLE *msword = NULL; // pointer to sound file
     ALLEGRO_FONT *pongFont = NULL; // pointer to Font file
     ALLEGRO_KEYBOARD_STATE KBstate;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL; // create event queue
@@ -99,6 +106,13 @@ int game()
 
     pongFont = al_load_ttf_font("arial.ttf", 18, 0);
 
+    mbeat = al_load_sample("beat.wav");
+    mdoor = al_load_sample("door.wav");
+    mdrug = al_load_sample("drug.wav");
+    mkey = al_load_sample("key.wav");
+    mshield = al_load_sample("shield.wav");
+    msnow = al_load_sample("snow.wav");
+    msword = al_load_sample("sword.wav");
     background = al_load_sample("fairy1.wav");
     al_play_sample(background, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
 
@@ -205,7 +219,8 @@ int game()
                 swit(map.number, map.cordx, map.cordy, k, l,
                      key, red, stone, blue, monster1, fight, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
-                     stair32, door, monster2, monster3, monster4, monster5);
+                     stair32, door, monster2, monster3, monster4, monster5,
+                     mbeat,mdoor,mdrug,mkey,mshield,msnow,msword);
             }
         }
 

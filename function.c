@@ -178,7 +178,9 @@ void swit(int **a,int **b,int**c, int k, int l,
           ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
           ALLEGRO_BITMAP* snow, ALLEGRO_BITMAP* beaten, ALLEGRO_BITMAP* defend, ALLEGRO_BITMAP* stair12,
           ALLEGRO_BITMAP* stair21, ALLEGRO_BITMAP* stair23, ALLEGRO_BITMAP* stair32, ALLEGRO_BITMAP* door,
-          ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5)
+          ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5,
+          ALLEGRO_SAMPLE *mbeat,ALLEGRO_SAMPLE *mdoor,ALLEGRO_SAMPLE *mdrug,ALLEGRO_SAMPLE *mkey,ALLEGRO_SAMPLE *mshield,
+          ALLEGRO_SAMPLE *msnow,ALLEGRO_SAMPLE *msword)
 {
     switch(a[k][l])
     {
@@ -196,6 +198,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(red, b[k][l], c[k][l], 0);
         if(overlap(b, c, k, l))
         {
+            al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_red += 1;
             player.life += 30;
 
@@ -207,6 +210,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(blue, b[k][l], c[k][l],0);
         if(overlap(b, c, k, l))
         {
+            al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_blue += 1;
             player.life += 50;
 
@@ -219,6 +223,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(key, b[k][l], c[k][l], 0);
         if(overlap(b, c, k, l))
         {
+            al_play_sample(mkey, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_key = player.num_key+1;
             a[k][l] = 0;
         }
@@ -238,6 +243,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
+                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                     if(player.def > girl.attack)
                     {
                         player.life = player.life;
@@ -275,6 +281,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(sword, b[k][l], c[k][l], 0);
         if(overlap(b, c, k, l))
         {
+            al_play_sample(msword, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_sword += 1;
             player.attack += 10;
 
@@ -286,7 +293,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(snow, b[k][l], c[k][l], 0);
         if(overlap(b, c, k, l))
         {
-
+            al_play_sample(msnow, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_snow += 1;
             player.attack += 20;
 
@@ -298,6 +305,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         al_draw_bitmap(defend, b[k][l], c[k][l], 0);
         if(overlap(b, c, k, l))
         {
+            al_play_sample(mshield, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
             player.num_shield += 1;
             player.def += 10;
 
@@ -311,6 +319,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         {
             if(player.num_key > 0)
             {
+                al_play_sample(mdoor, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                 player.num_key -= 1;
                 a[k][l] = 0;
             }
@@ -414,6 +423,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
+                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                     if(player.def > bat.attack)
                     {
                         player.life = player.life;
@@ -462,6 +472,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
+                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                     if(player.def > skull.attack)
                     {
                         player.life = player.life;
@@ -510,6 +521,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
+                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                     if(player.def > boss2.attack)
                     {
                         player.life = player.life;
@@ -558,6 +570,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 {
                     // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
+                    al_play_sample(mbeat, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
                     if(player.def > boss3.attack)
                     {
                         player.life = player.life;
