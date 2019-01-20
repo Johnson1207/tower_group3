@@ -197,7 +197,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             player.num_red += 1;
-            player.life += 5;
+            player.life += 30;
 
             a[k][l] = 0;
         }
@@ -208,7 +208,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             player.num_blue += 1;
-            player.energy += 1;
+            player.life += 50;
 
             a[k][l] = 0;
         }
@@ -276,7 +276,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             player.num_sword += 1;
-            player.attack += 2;
+            player.attack += 10;
 
             a[k][l] = 0;
         }
@@ -288,7 +288,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         {
 
             player.num_snow += 1;
-            player.attack *= 2;
+            player.attack += 20;
 
             a[k][l] = 0;
         }
@@ -299,7 +299,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             player.num_shield += 1;
-            player.def += 2;
+            player.def += 10;
 
             a[k][l] = 0;
         }
@@ -717,7 +717,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 1:
         if((girl.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(girl.def>player.attack)
@@ -736,7 +736,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 2:
         if((bat.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(bat.def>player.attack)
@@ -755,7 +755,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 3:
         if((skull.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(skull.def>player.attack)
@@ -774,7 +774,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 4:
         if((boss2.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(boss2.def>player.attack)
@@ -793,7 +793,7 @@ void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
     case 5:
         if((boss3.life>0)&&(player.life>0))
         {
-            if(al_key_down(&KBstate, ALLEGRO_KEY_SPACE))
+            if(al_key_down(&KBstate, ALLEGRO_KEY_Z))
             {
                 //al_draw_bitmap(attack,310,150,0);
                 if(boss3.def>player.attack)

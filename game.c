@@ -138,10 +138,10 @@ int game()
     boss2.times=0;
     boss2.def=200;
 
-    boss3.life=5000;
+    boss3.life=1500;
     boss3.attack=500;
     boss3.times=0;
-    boss3.def=500;
+    boss3.def=100;
 
 
     // do event registration
@@ -220,7 +220,12 @@ int game()
         if(player.lose == 1)
         {
             run = 0;
+            break;
+        }
 
+        if(player.win == 1)
+        {
+            run = 0;
             break;
         }
 
@@ -237,6 +242,7 @@ int game()
 
     while(player.lose = 1)
     {
+        al_flip_display();
         al_draw_bitmap(gameover, 0, 0, 0);
         al_draw_textf( pongFont, al_map_rgb(55, 55, 255), 330, 400, -1, "Press ESC to close.");
 
@@ -248,6 +254,7 @@ int game()
 
         while(player.win = 1)
     {
+        al_flip_display();
         al_draw_bitmap(youwin, 0, 0, 0);
         al_draw_textf( pongFont, al_map_rgb(55, 55, 255), 330, 400, -1, "Press ESC to close.");
 
