@@ -4,15 +4,9 @@ typedef struct item
     int cordx;
     int cordy;
     int life;
-    int energy;
     int num_key;
-    int num_blue;
-    int num_red;
     int attack;
     int number;
-    int num_shield;
-    int num_sword;
-    int num_snow;
     int times;
     int win;
     int lose;

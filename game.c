@@ -45,7 +45,14 @@ int game()
     ALLEGRO_BITMAP *gameover = NULL;
     ALLEGRO_BITMAP *youwin = NULL;
 
-    ALLEGRO_SAMPLE *background = NULL; // pointer to sound file
+    ALLEGRO_SAMPLE *background = NULL;
+    ALLEGRO_SAMPLE *mbeat = NULL;
+    ALLEGRO_SAMPLE *mdoor = NULL;
+    ALLEGRO_SAMPLE *mdrug = NULL;
+    ALLEGRO_SAMPLE *mkey = NULL;
+    ALLEGRO_SAMPLE *mshield = NULL;
+    ALLEGRO_SAMPLE *msnow = NULL;
+    ALLEGRO_SAMPLE *msword = NULL; // pointer to sound file
     ALLEGRO_FONT *pongFont = NULL; // pointer to Font file
     ALLEGRO_KEYBOARD_STATE KBstate;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL; // create event queue
@@ -99,15 +106,24 @@ int game()
 
     pongFont = al_load_ttf_font("arial.ttf", 18, 0);
 
+    mbeat = al_load_sample("beat.wav");
+    mdoor = al_load_sample("door.wav");
+    mdrug = al_load_sample("drug.wav");
+    mkey = al_load_sample("key.wav");
+    mshield = al_load_sample("shield.wav");
+    msnow = al_load_sample("snow.wav");
+    msword = al_load_sample("sword.wav");
     background = al_load_sample("fairy1.wav");
     al_play_sample(background, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
 
-    player.num_blue=0;
+    int girl_life = 100;
+    int bat_life = 100;
+    int skull_life = 100;
+    int boss2_life = 100;
+    int boss3_life = 100;
+
+
     player.num_key=0;
-    player.num_red=0;
-    player.energy=10;
-    player.num_snow=0;
-    player.num_sword=0;
     player.win=0;
     player.lose=0;
     player.times=0;
@@ -118,27 +134,27 @@ int game()
     player.attack=20;
     player.def=20;
 
-    girl.life=500;
+    girl.life=girl_life;
     girl.attack=100;
     girl.times=0;
     girl.def=100;
 
-    bat.life=50;
+    bat.life=bat_life;
     bat.attack=30;
     bat.times=0;
     bat.def=15;
 
-    skull.life=100;
+    skull.life=skull_life;
     skull.attack=80;
     skull.times=0;
     skull.def=50;
 
-    boss2.life=1000;
+    boss2.life=boss2_life;
     boss2.attack=150;
     boss2.times=0;
     boss2.def=200;
 
-    boss3.life=1500;
+    boss3.life=boss3_life;
     boss3.attack=500;
     boss3.times=0;
     boss3.def=100;
@@ -173,23 +189,23 @@ int game()
                     switch(player.times)
                     {
                     case 1:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 2:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 3:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 4:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
 
                     case 5:
-                        atta(pongFont, KBstate);
+                        atta(pongFont, KBstate, mbeat);
                         break;
                     }
                     break;
@@ -205,7 +221,9 @@ int game()
                 swit(map.number, map.cordx, map.cordy, k, l,
                      key, red, stone, blue, monster1, fight, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
-                     stair32, door, monster2, monster3, monster4, monster5);
+                     stair32, door, monster2, monster3, monster4, monster5,
+                     mbeat,mdoor,mdrug,mkey,mshield,msnow,msword,
+                     girl_life, bat_life, skull_life, boss2_life, boss3_life);
             }
         }
 
@@ -214,7 +232,6 @@ int game()
 
         move_pg(KBstate, pg);
         print(pongFont, pg);
-        run_out_of_energy();
 
 
         if(player.lose == 1)
