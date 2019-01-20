@@ -1,20 +1,23 @@
-#include "struct.h"
 #include "fun_header.h"
+#include "struct.h"
 
-//block 1,red 2,blue 3,key 4,
-int main()
+
+void past()
 {
-    float FPS = 120;
     bool run=1;
     int x=0,y=0;
 
-    ALLEGRO_BITMAP* start = NULL;
-    ALLEGRO_BITMAP* past = NULL;
-    ALLEGRO_BITMAP* grade = NULL;
+    ary grade[8];
+
+    tim(grade);
+    score(grade);
+    //system("pause");
+    rank(grade);
 
     /* pointer to the ball's image bitmap */
-    ALLEGRO_DISPLAY *display = NULL;/* pointer to display */
+    /* pointer to display */
     ALLEGRO_FONT *pongFont = NULL; /* pointer to Font file */
+    ALLEGRO_FONT *Font = NULL;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL; /* create event queue */
 
     ALLEGRO_EVENT events;
@@ -24,34 +27,39 @@ int main()
     /* first, set up Allegro and the graphics mode */
     al_init(); /* initialize Allegro */
     al_install_keyboard(); /* install the keyboard for Allegro to use */
-    al_install_mouse();
+    //al_install_mouse();
     al_init_image_addon();
     al_init_font_addon();    // install font addons
     al_init_ttf_addon();
-
-
-    start = al_load_bitmap("./start.jpg");
-    past = al_load_bitmap("./past.jpg");
-    grade = al_load_bitmap("./grade.jpg");
-
-
-    display = al_create_display(DISPLAY_WIDTH,DISPLAY_HEIGHT);/* give right paddle its initial y-coordinate */
+    /* give right paddle its initial y-coordinate */
 
     pongFont = al_load_ttf_font("ARCHRISTY.ttf", 70, 0); /* load the FONT file */
+    Font = al_load_ttf_font("ARCHRISTY.ttf", 30, 0);
 
     // do event registration
     event_queue = al_create_event_queue();
     al_register_event_source(event_queue, al_get_keyboard_event_source());    /* register keyboard to event queue */
     al_register_event_source(event_queue, al_get_mouse_event_source());
-    al_register_event_source(event_queue, al_get_display_event_source(display));
 
     while(run)
     {
 
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 340, 25, -1, "MENU");
-        al_draw_bitmap(start,240,200,0);
-        al_draw_bitmap(past,240,270,0);
-        al_draw_bitmap(grade,240,340,0);
+        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 340, 25, -1, "GRADE BOARD");
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 200, -1, "first--%s: %d %d %d %d %d:%d:%d",grade[0].name,grade[0].score,
+                       grade[0].time[0], grade[0].time[1], grade[0].time[2],grade[0].time[3],
+                       grade[0].time[4], grade[0].time[5] );
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 400, -1, "second--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
+                       grade[2].time[0], grade[2].time[1], grade[2].time[2],grade[2].time[3],
+                       grade[2].time[4], grade[2].time[5] );
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 250, -1, "third--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
+                       grade[2].time[0], grade[2].time[1], grade[2].time[2],grade[2].time[3],
+                       grade[2].time[4], grade[2].time[5] );
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 300, -1, "fourth--%s: %d %d %d %d %d:%d:%d",grade[3].name,grade[3].score,
+                       grade[3].time[0], grade[3].time[1], grade[3].time[2],grade[3].time[3],
+                       grade[3].time[4], grade[3].time[5] );
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 350, -1, "fifth--%s: %d %d %d %d %d:%d:%d",grade[4].name,grade[4].score,
+                       grade[4].time[0], grade[4].time[1], grade[4].time[2],grade[4].time[3],
+                       grade[4].time[4], grade[4].time[5] );
 
         //al_get_next_event(event_queue, &events);
         if (!al_is_event_queue_empty(event_queue))
@@ -65,20 +73,14 @@ int main()
                     break;
                 case ALLEGRO_EVENT_KEY_DOWN:
                     if(events.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
-                        run = 0;
-                    break;
-                case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
-                        x = events.mouse.x;
-                        y = events.mouse.y;
-                        printf("%d %d\n",x,y);
-                        mouse(x,y);
-
+                        run=0;
+                    if(events.keyboard.keycode == ALLEGRO_KEY_ENTER)
+                        run=0;
                     break;
 
                 }
             }
         }
-
 
         //al_rest(0.1);
 
@@ -90,11 +92,8 @@ int main()
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
     /* destroy the ball bitmap */
-    al_destroy_display( display); /* destroy the display */
+    /* destroy the display */
     al_destroy_font( pongFont ); /* destroy the font */
     al_destroy_event_queue(event_queue);
 
-    return 0;
 }  /* end function main */
-
-

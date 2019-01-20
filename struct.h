@@ -61,3 +61,10 @@ li map3;
 li map_store1;
 
 #endif
+
+typedef struct aray
+{
+    int score ;
+    int time[6];
+    char name[20] ;
+} ary;

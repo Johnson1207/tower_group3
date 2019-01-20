@@ -1,12 +1,12 @@
-
 #include "struct.h"
 #include "fun_header.h"
 
 
-int game()
+int game(int maptype)
 {
     bool run=1;
     int j=0;
+    int *pla[13];
     map.number=form_matrix(ROWSIZE,COLSIZE);
     map2.number=form_matrix(ROWSIZE,COLSIZE);
     map3.number=form_matrix(ROWSIZE,COLSIZE);
@@ -14,12 +14,29 @@ int game()
     map.cordx=form_matrix(ROWSIZE,COLSIZE);
     map.cordy=form_matrix(ROWSIZE,COLSIZE);
 
-    value(map.number,ROWSIZE,COLSIZE);
-    value2(map2.number,ROWSIZE,COLSIZE);
-    value3(map3.number,ROWSIZE,COLSIZE);
+    //value(map.number,ROWSIZE,COLSIZE);
+    //value2(map2.number,ROWSIZE,COLSIZE);
+    //value3(map3.number,ROWSIZE,COLSIZE);
     value_cord(map.cordx,map.cordy,ROWSIZE,COLSIZE);
+    getmap(map.number,maptype,1);
+    getmap(map2.number,maptype,2);
+    getmap(map3.number,maptype,3);
+    getsta(pla,maptype);
+    player.cordx=pla[0];
+    player.cordy=pla[1];
+    player.life=pla[2];
+    player.num_key=pla[3];
+    player.attack=pla[4];
+    player.number=pla[5];
+    player.times=pla[6];
+    player.win=pla[7];
+    player.lose=pla[8];
+    player.def=pla[9];
+    player.level=pla[10];
+    player.moves=pla[11];
+    player.judge=pla[12];
 
-    ALLEGRO_DISPLAY* display = NULL;
+    //ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_BITMAP* key = NULL;
     ALLEGRO_BITMAP* red = NULL;
     ALLEGRO_BITMAP* stone = NULL;
@@ -61,11 +78,10 @@ int game()
     int k=0;
     int l=0;
 
-    player.cordx = 300;
-    player.cordy= 650;
-
-
-
+    /*
+        player.cordx = 300;
+        player.cordy= 650;
+    */
 
     al_init();
     al_init_image_addon();
@@ -77,7 +93,7 @@ int game()
     al_init_font_addon();
     al_init_ttf_addon();
 
-    display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    //display = al_create_display(DISPLAY_WIDTH, DISPLAY_HEIGHT);
 
     key = al_load_bitmap("./key.png");
     red = al_load_bitmap("./red.png");
@@ -123,17 +139,18 @@ int game()
     int boss3_life = 100;
 
 
-    player.num_key=0;
-    player.win=0;
-    player.lose=0;
-    player.times=0;
-    player.level=1;
-    player.moves=0;
+    /*
+        player.num_key=0;
+        player.win=0;
+        player.lose=0;
+        player.times=0;
+        player.level=1;
+        player.moves=0;
 
-    player.life=1000;
-    player.attack=20;
-    player.def=20;
-
+        player.life=1000;
+        player.attack=20;
+        player.def=20;
+    */
     girl.life=girl_life;
     girl.attack=100;
     girl.times=0;
@@ -159,11 +176,10 @@ int game()
     boss3.times=0;
     boss3.def=100;
 
-
     // do event registration
     event_queue = al_create_event_queue();
     al_register_event_source(event_queue, al_get_keyboard_event_source());    // register keyboard to event queue
-    al_register_event_source(event_queue, al_get_display_event_source(display));
+    //al_register_event_source(event_queue, al_get_display_event_source(display));
 
     while(run)
     {
@@ -183,6 +199,17 @@ int game()
                 case ALLEGRO_EVENT_KEY_DOWN:
                     if(events.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
                         run = 0;
+                    if(events.keyboard.keycode == ALLEGRO_KEY_ENTER)
+                    {
+                        savload(&maptype);
+                        printf("maptype %d\n",maptype);
+                        inpmap(map.number,maptype,1);
+                        inpmap(map2.number,maptype,2);
+                        inpmap(map3.number,maptype,3);
+                        inpsta(player,maptype);
+                        run=0;
+                    }
+
 
                     //move_pg(KBstate, pg);
 
@@ -269,7 +296,7 @@ int game()
 
     }
 
-        while(player.win == 1)
+    while(player.win == 1)
     {
         al_flip_display();
         al_draw_bitmap(youwin, 0, 0, 0);
@@ -306,7 +333,7 @@ int game()
     al_destroy_bitmap(bitmap_map);
     al_destroy_bitmap(gameover);
     al_destroy_bitmap(youwin);
-    al_destroy_display(display);
+    //al_destroy_display(display);
     al_destroy_event_queue(event_queue);
     al_destroy_sample(background); /* destroy the background sound file */
 

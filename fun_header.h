@@ -10,7 +10,6 @@
 #include <math.h>
 #include <time.h>
 
-
 #define MOVE 2
 
 #define ROWSIZE 13
