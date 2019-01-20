@@ -84,7 +84,7 @@ int game()
     stair23= al_load_bitmap("./stair23.png");
     stair32= al_load_bitmap("./stair32.png");
     beaten= al_load_bitmap("./beaten.png");
-    sword= al_load_bitmap("./sword.bmp");
+    sword= al_load_bitmap("./sword.png");
     snow= al_load_bitmap("./snow.png");
     defend= al_load_bitmap("./shield.png");
     monster1= al_load_bitmap("./girl.png");
