@@ -351,7 +351,7 @@ int game(int maptype)
     al_destroy_bitmap(gameover);
     al_destroy_bitmap(youwin);
 
-    al_destroy_display(display);
+    //al_destroy_display(display);
     al_destroy_event_queue(event_queue);
 
     al_destroy_sample(background); /* destroy the background sound file */

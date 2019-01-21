@@ -786,12 +786,12 @@ void fighting(ALLEGRO_BITMAP *fight1, ALLEGRO_BITMAP *fight2, ALLEGRO_BITMAP *fi
 
             case 2:
                 al_draw_bitmap(fight2, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", bat.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", bat.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",bat.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 210, -1, " %d", bat.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 550, 275, -1, " %d", bat.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 210, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 350, 275, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 345,-1, " %d",bat.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 345, -1, " %d", player.def);
                 break;
 
             case 3:
