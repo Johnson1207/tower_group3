@@ -39,6 +39,7 @@ int load(  )
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 150, -1, "LOAD A");
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 200, -1, "LOAD B");
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 250, -1, "LOAD C");
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 450, -1, "(press enter to back)");
 
         //al_get_next_event(event_queue, &events);
         if (!al_is_event_queue_empty(event_queue))
