@@ -140,11 +140,11 @@ int game(int maptype)
     background = al_load_sample("fairy1.wav");
     al_play_sample(background, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
 
-    int girl_life = 100;
-    int bat_life = 100;
-    int skull_life = 100;
-    int boss2_life = 100;
-    int boss3_life = 100;
+    int girl_life = 500;
+    int bat_life = 200;
+    int skull_life = 300;
+    int boss2_life = 1000;
+    int boss3_life = 1200;
 
 
     /*

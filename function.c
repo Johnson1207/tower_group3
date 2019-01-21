@@ -744,7 +744,7 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
 
 
     al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700, 20, -1, " LEVEL %d", player.level);
-    al_draw_textf( pongFont, al_map_rgb(255, 0,100), 700, 40, -1, " Life: %d", player.life);
+    al_draw_textf( pongFont, al_map_rgb(255, 0,100), 700, 40, -1, " HP: %d", player.life);
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 700,40, -1, " energy: %d", player.energy);
     al_draw_textf( pongFont, al_map_rgb(0, 150, 255), 700, 60, -1, " ATK: %d", player.attack);
     al_draw_textf( pongFont, al_map_rgb(0, 255, 500), 700, 80, -1, " DEF: %d", player.def);
@@ -757,10 +757,12 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,120, -1, " Win: %d", player.win);
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,140,-1, " Lose: %d", player.lose);
 
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 700, -1, "When you move,you will lose your energy.If energy=0,you can't move");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 720, -1, "In the fight,You are the first to attack.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 740, -1, " And if you don't finish the fight,you can't move.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 760, -1, "Attack PRESS Z");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 670, -1, "In the fight,You are the first to attack.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 690, -1, " And if you don't finish the fight,you can't move.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 710, -1, "Attack PRESS  'Z'");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 730, -1, "Save game PRESS  'Enter'");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 750, -1, "Close game PRESS  'ESC'");
+    al_draw_textf( pongFont, al_map_rgb(255, 150, 150), 370, 775, -1, "Snow:ATK + 10  Sword:ATK + 50  Shield:DEF + 10  Red med:HP + 30  Blue med:HP + 50");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 600, -1, "use red drug (life+1) PRESS R"  );
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200,620, -1, "use blue drug (energy+1) PRESS B ");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 640, -1, "USE sword (ATK+2) PRESS S ");
