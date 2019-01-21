@@ -176,7 +176,7 @@ void value_cord(int **cordx,int **cordy,int rows,int cols)
 
 void swit(int **a,int **b,int**c, int k, int l,
           ALLEGRO_BITMAP* key, ALLEGRO_BITMAP* red, ALLEGRO_BITMAP* stone, ALLEGRO_BITMAP* blue,
-          ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
+          ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight,ALLEGRO_BITMAP* fight14, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
           ALLEGRO_BITMAP* snow, ALLEGRO_BITMAP* beaten, ALLEGRO_BITMAP* defend, ALLEGRO_BITMAP* stair12,
           ALLEGRO_BITMAP* stair21, ALLEGRO_BITMAP* stair23, ALLEGRO_BITMAP* stair32, ALLEGRO_BITMAP* door,
           ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5,
@@ -842,24 +842,24 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
     al_draw_bitmap(pg, player.cordx, player.cordy, 0);
 
 
-    al_draw_textf( pongFont, al_map_rgb(0,0,0), 750,0, -1, " LEVEL %d", player.level);
-    al_draw_textf( pongFont, al_map_rgb(255, 0,0), 750,20, -1, " life: %d", player.life);
-    //al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 750,40, -1, " energy: %d", player.energy);
-    al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 750,40, -1, " ATK: %d", player.attack);
-    al_draw_textf( pongFont, al_map_rgb(0,0, 255), 750,60, -1, " DEF: %d", player.def);
+    al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700, 20, -1, " LEVEL %d", player.level);
+    al_draw_textf( pongFont, al_map_rgb(255, 0,100), 700, 40, -1, " Life: %d", player.life);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 700,40, -1, " energy: %d", player.energy);
+    al_draw_textf( pongFont, al_map_rgb(0, 150, 255), 700, 60, -1, " ATK: %d", player.attack);
+    al_draw_textf( pongFont, al_map_rgb(0, 255, 500), 700, 80, -1, " DEF: %d", player.def);
     //al_draw_textf( pongFont, al_map_rgb(255, 255,255), 620,100, -1, " Red Drug: %d", player.num_red);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,120, -1, " Blue Drug: %d", player.num_blue);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,140, -1, " Sword: %d", player.num_sword);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,160, -1, " Snow: %d", player.num_snow);
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 620,180, -1, " Shield: %d", player.num_shield);
-    al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 750,80, -1, " Key: %d", player.num_key);
-    al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,120, -1, " Win: %d", player.win);
-    al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 750,140,-1, " Lose: %d", player.lose);
+    al_draw_textf( pongFont, al_map_rgb(0, 255, 0), 700,100, -1, " Key: %d", player.num_key);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,120, -1, " Win: %d", player.win);
+    //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,140,-1, " Lose: %d", player.lose);
 
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 280, 800, -1, "When you move,you will lose your energy.If energy=0,you can't move");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 820, -1, "In the fight,You are the first to attack.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 840, -1, " And if you don't finish the fight,you can't move.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 860, -1, "Attack PRESS Z");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 700, -1, "When you move,you will lose your energy.If energy=0,you can't move");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 720, -1, "In the fight,You are the first to attack.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 740, -1, " And if you don't finish the fight,you can't move.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 760, -1, "Attack PRESS Z");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 600, -1, "use red drug (life+1) PRESS R"  );
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200,620, -1, "use blue drug (energy+1) PRESS B ");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 640, -1, "USE sword (ATK+2) PRESS S ");
