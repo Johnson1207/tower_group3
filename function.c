@@ -176,7 +176,7 @@ void value_cord(int **cordx,int **cordy,int rows,int cols)
 
 void swit(int **a,int **b,int**c, int k, int l,
           ALLEGRO_BITMAP* key, ALLEGRO_BITMAP* red, ALLEGRO_BITMAP* stone, ALLEGRO_BITMAP* blue,
-          ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight,ALLEGRO_BITMAP* fight14, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
+          ALLEGRO_BITMAP* monster1, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
           ALLEGRO_BITMAP* snow, ALLEGRO_BITMAP* beaten, ALLEGRO_BITMAP* defend, ALLEGRO_BITMAP* stair12,
           ALLEGRO_BITMAP* stair21, ALLEGRO_BITMAP* stair23, ALLEGRO_BITMAP* stair32, ALLEGRO_BITMAP* door,
           ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5,
@@ -235,12 +235,11 @@ void swit(int **a,int **b,int**c, int k, int l,
             player.times = 1;
             player.cordx = b[k][l];
             player.cordy = c[k][l];
-            al_draw_bitmap(fight, 60, 70, 0);
+
             if((player.life>0)&&(girl.life>0))
             {
                 if(girl.times == 1) //girl has been attacked 1 time
                 {
-                    // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
 
                     if(player.def > girl.attack)
@@ -253,17 +252,12 @@ void swit(int **a,int **b,int**c, int k, int l,
                     }
                     girl.times = 0;
                 }
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 460,150, -1, " %d", girl.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 460, 200, -1, " %d", girl.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 260,150, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 260, 200, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 460,250,-1, " %d",girl.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 260, 250, -1, " %d", player.def);
 
             }
             if(player.life <= 0)
             {
                 player.lose += 1;
+                player.times = 0;
                 //a[k][l] = 0;
 
             }
@@ -271,6 +265,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 //player.win += 1;
                 girl.life = girl_life;
+                player.times = 0;
                 a[k][l] = 0;
             }
         }
@@ -414,12 +409,11 @@ void swit(int **a,int **b,int**c, int k, int l,
             player.times = 2;
             player.cordx = b[k][l];
             player.cordy = c[k][l];
-            al_draw_bitmap(fight, 60, 70, 0);
+
             if((player.life>0)&&(bat.life>0))
             {
                 if(bat.times == 1) //girl has been attacked 1 time
                 {
-                    // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
 
                     if(player.def > bat.attack)
@@ -432,17 +426,12 @@ void swit(int **a,int **b,int**c, int k, int l,
                     }
                     bat.times = 0;
                 }
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 460,150, -1, " %d", bat.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 460, 200, -1, " %d", bat.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 260,150, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 260, 200, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 460,250,-1, " %d",bat.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 260, 250, -1, " %d", player.def);
 
             }
             if(player.life <= 0)
             {
                 player.lose += 1;
+                player.times = 0;
                 //a[k][l] = 0;
 
             }
@@ -450,6 +439,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 //player.win += 1;
                 bat.life = bat_life;
+                player.times = 0;
                 a[k][l] = 0;
             }
         }
@@ -463,12 +453,11 @@ void swit(int **a,int **b,int**c, int k, int l,
             player.times = 3;
             player.cordx = b[k][l];
             player.cordy = c[k][l];
-            al_draw_bitmap(fight, 60, 70, 0);
+
             if((player.life>0)&&(skull.life>0))
             {
                 if(skull.times == 1) //girl has been attacked 1 time
                 {
-                    // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
 
                     if(player.def > skull.attack)
@@ -481,17 +470,12 @@ void swit(int **a,int **b,int**c, int k, int l,
                     }
                     skull.times = 0;
                 }
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 460,150, -1, " %d", skull.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 460, 200, -1, " %d", skull.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 260,150, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 260, 200, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 460,250,-1, " %d",skull.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 260, 250, -1, " %d", player.def);
 
             }
             if(player.life <= 0)
             {
                 player.lose += 1;
+                player.times = 0;
                 //a[k][l] = 0;
 
             }
@@ -499,6 +483,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 //player.win += 1;
                 skull.life = skull_life;
+                player.times = 0;
                 a[k][l] = 0;
             }
         }
@@ -512,12 +497,11 @@ void swit(int **a,int **b,int**c, int k, int l,
             player.times = 4;
             player.cordx = b[k][l];
             player.cordy = c[k][l];
-            al_draw_bitmap(fight, 60, 70, 0);
+
             if((player.life>0)&&(boss2.life>0))
             {
                 if(boss2.times == 1) //girl has been attacked 1 time
                 {
-                    // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
 
                     if(player.def > boss2.attack)
@@ -530,17 +514,12 @@ void swit(int **a,int **b,int**c, int k, int l,
                     }
                     boss2.times = 0;
                 }
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 460,150, -1, " %d", boss2.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 460, 200, -1, " %d", boss2.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 260,150, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 260, 200, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 460,250,-1, " %d",boss2.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 260, 250, -1, " %d", player.def);
 
             }
             if(player.life <= 0)
             {
                 player.lose += 1;
+                player.times = 0;
                 //a[k][l] = 0;
 
             }
@@ -548,6 +527,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 //player.win += 1;
                 boss2.life = boss2_life;
+                player.times = 0;
                 a[k][l] = 0;
             }
         }
@@ -561,12 +541,11 @@ void swit(int **a,int **b,int**c, int k, int l,
             player.times = 5;
             player.cordx = b[k][l];
             player.cordy = c[k][l];
-            al_draw_bitmap(fight, 60, 70, 0);
+
             if((player.life>0)&&(boss3.life>0))
             {
                 if(boss3.times == 1) //girl has been attacked 1 time
                 {
-                    // al_draw_textf(pongFont, al_map_rgb(255, 0, 0), 480,160, -1,"girl attack");
                     al_draw_bitmap(beaten,90,150,0);
 
                     if(player.def > boss3.attack)
@@ -579,17 +558,13 @@ void swit(int **a,int **b,int**c, int k, int l,
                     }
                     boss3.times = 0;
                 }
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 460,150, -1, " %d", boss3.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 460, 200, -1, " %d", boss3.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 260,150, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 260, 200, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 460,250,-1, " %d",boss3.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 260, 250, -1, " %d", player.def);
+
 
             }
             if(player.life <= 0)
             {
                 player.lose += 1;
+                player.times = 0;
                 //a[k][l] = 0;
 
             }
@@ -597,6 +572,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 player.win += 1;
                 boss3.life = boss3_life;
+                player.times = 0;
                 a[k][l] = 0;
             }
         }
@@ -643,81 +619,6 @@ void move_pg(ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_BITMAP *pg)
         player.cordy = 630;
 
 }
-
-
-/*int use_item_red(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate, it player)
-{
-    if(player.num_red>0)
-    {
-
-        if(al_key_down(&KBstate, ALLEGRO_KEY_R))
-        {
-
-            player.life+=1;
-            player.num_red-=1;
-        }
-    }
-}
-
-
-int use_item_blue(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
-{
-    if(player.num_blue>0)
-    {
-
-        if(al_key_down(&KBstate, ALLEGRO_KEY_B))
-        {
-
-            player.energy+=1;
-            player.num_blue-=1;
-        }
-    }
-}
-
-
-int use_item_sword(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
-{
-    if(player.num_sword>0)
-    {
-
-        if(al_key_down(&KBstate, ALLEGRO_KEY_S))
-        {
-
-            player.attack+=2;
-            player.num_sword-=1;
-        }
-    }
-}
-
-
-int use_item_snow(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
-{
-    if(player.num_snow>0)
-    {
-
-        if(al_key_down(&KBstate, ALLEGRO_KEY_A))
-        {
-
-            player.attack=player.attack*2;
-            player.num_snow-=1;
-        }
-    }
-}
-
-
-int use_item_shield(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate)
-{
-    if(player.num_shield>0)
-    {
-
-        if(al_key_down(&KBstate, ALLEGRO_KEY_D))
-        {
-
-            player.def=player.def+2;
-            player.num_shield-=1;
-        }
-    }
-}*/
 
 
 void atta(ALLEGRO_FONT* pongFont, ALLEGRO_KEYBOARD_STATE KBstate, ALLEGRO_SAMPLE *mbeat)
@@ -866,4 +767,61 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 660, -1, "USE snow (ATK*2) PRESS A");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 680, -1, "USE shield (DEF+2) PRESS D");
 
+}
+
+void fighting(ALLEGRO_BITMAP *fight1, ALLEGRO_BITMAP *fight2, ALLEGRO_BITMAP *fight3,
+              ALLEGRO_BITMAP *fight4, ALLEGRO_BITMAP *fight5, ALLEGRO_FONT *pongFont)
+{
+    switch(player.times)
+            {
+            case 1:
+                al_draw_bitmap(fight1, 150, 150, 0);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", girl.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", girl.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330,-1, " %d",girl.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                break;
+
+            case 2:
+                al_draw_bitmap(fight2, 150, 150, 0);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", bat.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", bat.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",bat.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                break;
+
+            case 3:
+                al_draw_bitmap(fight3, 150, 150, 0);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", skull.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", skull.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",skull.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                break;
+
+            case 4:
+                al_draw_bitmap(fight4, 150, 150, 0);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", boss2.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", boss2.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",boss2.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                break;
+
+            case 5:
+                al_draw_bitmap(fight5, 150, 150, 0);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", boss3.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", boss3.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",boss3.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                break;
+            }
 }

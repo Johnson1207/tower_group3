@@ -53,8 +53,11 @@ int game(int maptype)
     ALLEGRO_BITMAP *stair23 = NULL;//stair from map 2 to 3
     ALLEGRO_BITMAP *stair32 = NULL;//stair from map 3 to 2
     ALLEGRO_BITMAP *monster1 = NULL;
-    ALLEGRO_BITMAP *fight = NULL;
-    ALLEGRO_BITMAP* fight14 = NULL;
+    ALLEGRO_BITMAP *fight1 = NULL;
+    ALLEGRO_BITMAP *fight2 = NULL;
+    ALLEGRO_BITMAP *fight3 = NULL;
+    ALLEGRO_BITMAP *fight4 = NULL;
+    ALLEGRO_BITMAP *fight5 = NULL;
     ALLEGRO_BITMAP *bitmap_map = NULL;
     ALLEGRO_BITMAP *monster2 = NULL;
     ALLEGRO_BITMAP *monster3 = NULL;
@@ -116,8 +119,11 @@ int game(int maptype)
     monster3= al_load_bitmap("./skull.png");
     monster4= al_load_bitmap("./boss2.png");
     monster5= al_load_bitmap("./boss3.png");
-    fight= al_load_bitmap("./fight.png");
-    fight14= al_load_bitmap("./fight14.png");
+    fight1= al_load_bitmap("./fight1.png");
+    fight2= al_load_bitmap("./fight2.png");
+    fight3= al_load_bitmap("./fight3.png");
+    fight4= al_load_bitmap("./fight4.png");
+    fight5= al_load_bitmap("./fight5.png");
     bitmap_map = al_load_bitmap("./ice.jpg");
     gameover = al_load_bitmap("./gameover.jpg");
     youwin = al_load_bitmap("./youwin.jpg");
@@ -248,7 +254,7 @@ int game(int maptype)
             for(l=0; l<COLSIZE; l++)
             {
                 swit(map.number, map.cordx, map.cordy, k, l,
-                     key, red, stone, blue, monster1, fight,fight14, pongFont,
+                     key, red, stone, blue, monster1, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
                      stair32, door, monster2, monster3, monster4, monster5,
                      mbeat,mdoor,mdrug,mkey,mshield,msnow,msword,
@@ -273,6 +279,11 @@ int game(int maptype)
         {
             run = 0;
             break;
+        }
+
+        if(player.times != 0)
+        {
+            fighting(fight1, fight2, fight3, fight4, fight5, pongFont);
         }
 
 
@@ -331,14 +342,28 @@ int game(int maptype)
     al_destroy_bitmap(monster3);
     al_destroy_bitmap(monster4);
     al_destroy_bitmap(monster5);
-    al_destroy_bitmap(fight);
-    al_destroy_bitmap(fight14);
+    al_destroy_bitmap(fight1);
+    al_destroy_bitmap(fight2);
+    al_destroy_bitmap(fight3);
+    al_destroy_bitmap(fight4);
+    al_destroy_bitmap(fight5);
     al_destroy_bitmap(bitmap_map);
     al_destroy_bitmap(gameover);
     al_destroy_bitmap(youwin);
-    //al_destroy_display(display);
+
+    al_destroy_display(display);
     al_destroy_event_queue(event_queue);
+
     al_destroy_sample(background); /* destroy the background sound file */
+    al_destroy_sample(mdrug);
+    al_destroy_sample(mbeat);
+    al_destroy_sample(mdoor);
+    al_destroy_sample(mkey);
+    al_destroy_sample(mshield);
+    al_destroy_sample(msnow);
+    al_destroy_sample(msword);
+
+    al_destroy_font(pongFont);
 
 
     return 0;
