@@ -71,12 +71,6 @@ int savload(int *maptype )
                         *maptype=3;
                         run=0;
                     }
-                    if(events.keyboard.keycode == ALLEGRO_KEY_N)
-                    {
-                        *maptype=4;
-                        run=0;
-                    }
-
                     break;
                 case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
                     x = events.mouse.x;

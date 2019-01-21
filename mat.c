@@ -120,7 +120,6 @@ void getmap(int **map,int play,int num)
     int *fkey;
     int i,j;
 
-
     if(play==0)
     {
         if(num==1)
@@ -208,9 +207,9 @@ void getsta(int *pla[],int play)
     }
     if(play==2)
     {
-        fkey=fopen("./map/play2/stat0.txt","r");
+        fkey=fopen("./map/play2/stat2.txt","r");
     }
-    if(play==2)
+    if(play==3)
     {
         fkey=fopen("./map/play3/stat3.txt","r");
     }
@@ -239,9 +238,9 @@ void inpsta(it player,int play)
     }
     if(play==2)
     {
-        fkey=fopen("./map/play2/stat0.txt","w");
+        fkey=fopen("./map/play2/stat2.txt","w");
     }
-    if(play==2)
+    if(play==3)
     {
         fkey=fopen("./map/play3/stat3.txt","w");
     }

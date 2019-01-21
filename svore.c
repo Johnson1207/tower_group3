@@ -1,7 +1,7 @@
 #include "fun_header.h"
 #include "struct.h"
 
-void tim(ary a[])
+void tim(ary a[],char nam[],int score)
 {
     //int num ;
     //char nam ;
@@ -16,8 +16,8 @@ void tim(ary a[])
     //printf("give your name and score\n");
     //scanf("%s %d",a[5].name,&a[5].score);
 
-    a[5].score=20;
-    strcpy(a[5].name,"kelly");
+    a[5].score=score;
+    strcpy(a[5].name,nam);
     a[5].time[0]=1900+p->tm_year;
     a[5].time[1]=1+p->tm_mon;
     a[5].time[2]=p->tm_mday;

@@ -78,7 +78,9 @@ int main()
                         x = events.mouse.x;
                         y = events.mouse.y;
                         printf("%d %d\n",x,y);
-                        mouse(x,y);
+                        mouse(player,x,y);
+                        x=0;
+                        y=0;
 
                     break;
 

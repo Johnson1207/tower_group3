@@ -61,6 +61,8 @@ int load(  )
                     y = events.mouse.y;
                     printf("%d %d\n",x,y);
                     mapload(x,y);
+                    x=0;
+                    y=0;
                     break;
 
                 }
