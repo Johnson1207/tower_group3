@@ -44,7 +44,7 @@ void past(ary grade[],char nam[],int num)
     while(run)
     {
 
-<<<<<<< HEAD
+/*<<<<<<< HEAD
         al_draw_bitmap(bitmap_boardback,0,0,0);
         al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 340, 25, -1, "GRADE BOARD");
         al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 200, -1, "first--%s: %d %d %d %d %d:%d:%d",grade[0].name,grade[0].score,
@@ -60,7 +60,7 @@ void past(ary grade[],char nam[],int num)
                        grade[3].time[0], grade[3].time[1], grade[3].time[2],grade[3].time[3],
                        grade[3].time[4], grade[3].time[5] );
         al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 350, -1, "fifth--%s: %d %d %d %d %d:%d:%d",grade[4].name,grade[4].score,
-=======
+=======*/
         al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 340, 25, -1, "GRADE BOARD");
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 200, -1, "first--%s: %d %d %d %d %d:%d:%d",
                        grade[0].name,grade[0].score,
@@ -76,7 +76,7 @@ void past(ary grade[],char nam[],int num)
                        grade[3].time[0], grade[3].time[1], grade[3].time[2],grade[3].time[3],
                        grade[3].time[4], grade[3].time[5] );
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 400, -1, "fifth--%s: %d %d %d %d %d:%d:%d",grade[4].name,grade[4].score,
->>>>>>> JOJO
+//>>>>>>> JOJO
                        grade[4].time[0], grade[4].time[1], grade[4].time[2],grade[4].time[3],
                        grade[4].time[4], grade[4].time[5] );
 
