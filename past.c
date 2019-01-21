@@ -19,7 +19,7 @@ void past()
     ALLEGRO_FONT *pongFont = NULL; /* pointer to Font file */
     ALLEGRO_FONT *Font = NULL;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL; /* create event queue */
-
+    ALLEGRO_BITMAP *bitmap_boardback = NULL;
     ALLEGRO_EVENT events;
     ALLEGRO_KEYBOARD_STATE KBstate;
 
@@ -33,6 +33,8 @@ void past()
     al_init_ttf_addon();
     /* give right paddle its initial y-coordinate */
 
+    bitmap_boardback = al_load_bitmap("./bitmap_boardback.jpg");
+
     pongFont = al_load_ttf_font("ARCHRISTY.ttf", 70, 0); /* load the FONT file */
     Font = al_load_ttf_font("ARCHRISTY.ttf", 30, 0);
 
@@ -44,20 +46,21 @@ void past()
     while(run)
     {
 
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 340, 25, -1, "GRADE BOARD");
-        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 200, -1, "first--%s: %d %d %d %d %d:%d:%d",grade[0].name,grade[0].score,
+        al_draw_bitmap(bitmap_boardback,0,0,0);
+        al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 340, 25, -1, "GRADE BOARD");
+        al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 200, -1, "first--%s: %d %d %d %d %d:%d:%d",grade[0].name,grade[0].score,
                        grade[0].time[0], grade[0].time[1], grade[0].time[2],grade[0].time[3],
                        grade[0].time[4], grade[0].time[5] );
-        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 400, -1, "second--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
+        al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 400, -1, "second--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
                        grade[2].time[0], grade[2].time[1], grade[2].time[2],grade[2].time[3],
                        grade[2].time[4], grade[2].time[5] );
-        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 250, -1, "third--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
+        al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 250, -1, "third--%s: %d %d %d %d %d:%d:%d",grade[2].name,grade[2].score,
                        grade[2].time[0], grade[2].time[1], grade[2].time[2],grade[2].time[3],
                        grade[2].time[4], grade[2].time[5] );
-        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 300, -1, "fourth--%s: %d %d %d %d %d:%d:%d",grade[3].name,grade[3].score,
+        al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 300, -1, "fourth--%s: %d %d %d %d %d:%d:%d",grade[3].name,grade[3].score,
                        grade[3].time[0], grade[3].time[1], grade[3].time[2],grade[3].time[3],
                        grade[3].time[4], grade[3].time[5] );
-        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 350, -1, "fifth--%s: %d %d %d %d %d:%d:%d",grade[4].name,grade[4].score,
+        al_draw_textf( Font, al_map_rgb(0, 0, 0), 340, 350, -1, "fifth--%s: %d %d %d %d %d:%d:%d",grade[4].name,grade[4].score,
                        grade[4].time[0], grade[4].time[1], grade[4].time[2],grade[4].time[3],
                        grade[4].time[4], grade[4].time[5] );
 
@@ -91,9 +94,11 @@ void past()
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
-    /* destroy the ball bitmap */
+   al_destroy_bitmap(bitmap_boardback); /* destroy the bitmap */
     /* destroy the display */
     al_destroy_font( pongFont ); /* destroy the font */
     al_destroy_event_queue(event_queue);
+
+
 
 }  /* end function main */

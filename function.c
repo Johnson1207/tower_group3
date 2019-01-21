@@ -200,7 +200,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.life += 30;
+            player.life += 100;
 
             a[k][l] = 0;
         }
@@ -211,7 +211,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mdrug, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.life += 50;
+            player.life = player.life*1.1;
 
             a[k][l] = 0;
         }
@@ -277,7 +277,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(msword, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.attack += 50;
+            player.attack =  player.attack*1.25;
 
             a[k][l] = 0;
         }
@@ -288,7 +288,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(msnow, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.attack += 10;
+            player.attack += 100;
 
             a[k][l] = 0;
         }
@@ -299,7 +299,7 @@ void swit(int **a,int **b,int**c, int k, int l,
         if(overlap(b, c, k, l))
         {
             al_play_sample(mshield, 1, 0, 1, ALLEGRO_PLAYMODE_ONCE, NULL);
-            player.def += 10;
+            player.def = player.def*1.2;
 
             a[k][l] = 0;
         }
@@ -414,7 +414,7 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 if(bat.times == 1) //girl has been attacked 1 time
                 {
-                    al_draw_bitmap(beaten,90,150,0);
+                    al_draw_bitmap(beaten,290,250,0);
 
                     if(player.def > bat.attack)
                     {

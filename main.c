@@ -9,8 +9,11 @@ int main()
     int x=0,y=0;
 
     ALLEGRO_BITMAP* start = NULL;
+    ALLEGRO_BITMAP* menuback = NULL;
     ALLEGRO_BITMAP* past = NULL;
     ALLEGRO_BITMAP* grade = NULL;
+
+    ALLEGRO_SAMPLE *startback = NULL;
 
     /* pointer to the ball's image bitmap */
     ALLEGRO_DISPLAY *display = NULL;/* pointer to display */
@@ -30,6 +33,8 @@ int main()
     al_init_ttf_addon();
 
 
+    startback = al_load_sample("startback.wav");
+    menuback = al_load_bitmap("./menuback.jpg");
     start = al_load_bitmap("./start.jpg");
     past = al_load_bitmap("./past.jpg");
     grade = al_load_bitmap("./grade.jpg");
@@ -48,7 +53,9 @@ int main()
     while(run)
     {
 
-        al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 340, 25, -1, "MENU");
+        al_play_sample(startback, 1, 0, 1, ALLEGRO_PLAYMODE_LOOP, NULL);
+        al_draw_bitmap(menuback,0,0,0);
+        al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 340, 25, -1, "MENU");
         al_draw_bitmap(start,240,200,0);
         al_draw_bitmap(past,240,270,0);
         al_draw_bitmap(grade,240,340,0);
@@ -89,10 +96,11 @@ int main()
 
         /* Clear the complete target bitmap, but confined by the clipping rectangle. */
     }
-    /* destroy the ball bitmap */
+    al_destroy_bitmap(menuback);/* destroy the bitmap */
     al_destroy_display( display); /* destroy the display */
     al_destroy_font( pongFont ); /* destroy the font */
     al_destroy_event_queue(event_queue);
+    al_destroy_sample(startback);
 
     return 0;
 }  /* end function main */
