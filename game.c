@@ -6,6 +6,7 @@ int game(int maptype)
 {
     bool run=1;
     int j=0;
+    int score;
     int *pla[13];
     map.number=form_matrix(ROWSIZE,COLSIZE);
     map2.number=form_matrix(ROWSIZE,COLSIZE);
@@ -211,13 +212,12 @@ int game(int maptype)
                     {
                         savload(&maptype);
                         printf("maptype %d\n",maptype);
-                        inpmap(map.number,maptype,1);
+                        inpmap(map_store1.number,maptype,1);
                         inpmap(map2.number,maptype,2);
                         inpmap(map3.number,maptype,3);
                         inpsta(player,maptype);
                         run=0;
                     }
-
 
                     //move_pg(KBstate, pg);
 
@@ -262,21 +262,22 @@ int game(int maptype)
             }
         }
 
-
-
-
         move_pg(KBstate, pg);
         print(pongFont, pg);
 
 
         if(player.lose == 1)
         {
+            score=player.attack*2+player.life*1.5;
+            name(player,0,score);
             run = 0;
             break;
         }
 
         if(player.win == 1)
         {
+            score=player.attack*2+player.life*1.5;
+            name(player,1,score);
             run = 0;
             break;
         }
@@ -286,8 +287,6 @@ int game(int maptype)
             fighting(fight1, fight2, fight3, fight4, fight5, pongFont);
         }
 
-
-
         al_rest(0.01);
 
         // display
@@ -296,6 +295,8 @@ int game(int maptype)
 
         // Clear the complete target bitmap, but confined by the clipping rectangle.
     }
+
+    /*
 
     while(player.lose == 1)
     {
@@ -320,6 +321,8 @@ int game(int maptype)
             break;
 
     }
+
+    */
     // Flip display to show the drawing result
     al_flip_display();
     al_destroy_bitmap(attack);
