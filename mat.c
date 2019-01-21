@@ -43,23 +43,12 @@ void inpmap(int **map,int play,int num)
     int *fkey;
     int i,j;
 
-    if(play==0)
-    {
-        if(num==1)
-        {
-            fkey=fopen("./map/org/map1.txt","w");
-        }
-        if(num==2)
-        {
-            fkey=fopen("./map/org/map2.txt","w");
-        }
-        if(num==3)
-        {
-            fkey=fopen("./map/org/map3.txt","w");
-        }
-    }
     if(play==1)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play1/map.txt","w");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play1/map1.txt","w");
@@ -75,6 +64,10 @@ void inpmap(int **map,int play,int num)
     }
     if(play==2)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play2/map.txt","w");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play2/map1.txt","w");
@@ -90,6 +83,10 @@ void inpmap(int **map,int play,int num)
     }
     if(play==3)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play3/map.txt","w");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play3/map1.txt","w");
@@ -122,6 +119,10 @@ void getmap(int **map,int play,int num)
 
     if(play==0)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/org/map.txt","r");
+        }
         if(num==1)
         {
             fkey=fopen("./map/org/map1.txt","r");
@@ -137,6 +138,10 @@ void getmap(int **map,int play,int num)
     }
     if(play==1)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play1/map.txt","r");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play1/map1.txt","r");
@@ -152,6 +157,10 @@ void getmap(int **map,int play,int num)
     }
     if(play==2)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play2/map.txt","r");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play2/map1.txt","r");
@@ -167,6 +176,10 @@ void getmap(int **map,int play,int num)
     }
     if(play==3)
     {
+        if(num==0)
+        {
+            fkey=fopen("./map/play3/map.txt","r");
+        }
         if(num==1)
         {
             fkey=fopen("./map/play3/map1.txt","r");
@@ -228,10 +241,6 @@ void inpsta(it player,int play)
     int *fkey;
     int i,j;
 
-    if(play==0)
-    {
-        fkey=fopen("./map/org/stat.txt","w");
-    }
     if(play==1)
     {
         fkey=fopen("./map/play1/stat1.txt","w");

@@ -331,10 +331,8 @@ void swit(int **a,int **b,int**c, int k, int l,
             {
                 for(l=0; l<COLSIZE; l++)
                 {
-                    map_store1.number[k][l] = map.number[k][l];//store map1
-
-                    map.number[k][l] = map2.number[k][l];
-                    map2.number[k][l] = map.number[k][l];//store map2
+                    map1.number[k][l] = map.number[k][l];//store map1
+                    map.number[k][l] = map2.number[k][l];//store map2
                     // printf("%d",map_store1.number[k][l]);
                 }//printf("\n");
             }
@@ -352,8 +350,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 for(l=0; l<COLSIZE; l++)
                 {
                     map2.number[k][l] = map.number[k][l];//store map2
-
-                    map.number[k][l] = map_store1.number[k][l];
+                    map.number[k][l] = map1.number[k][l];
 
                 }
                 printf("\n");
@@ -373,8 +370,7 @@ void swit(int **a,int **b,int**c, int k, int l,
                 for(l=0; l<COLSIZE; l++)
                 {
                     map2.number[k][l] = map.number[k][l];//store map2
-                    map.number[k][l] = map3.number[k][l];
-                    map3.number[k][l] = map.number[k][l];//store map3
+                    map.number[k][l] = map3.number[k][l];//store map3
                 }
 
             }
@@ -392,7 +388,6 @@ void swit(int **a,int **b,int**c, int k, int l,
                 for(l=0; l<COLSIZE; l++)
                 {
                     map3.number[k][l] = map.number[k][l];//store map3
-
                     map.number[k][l] = map2.number[k][l];
                     // printf("%d",map_store2.number[k][l]);
                 }//printf("\n");

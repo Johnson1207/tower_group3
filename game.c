@@ -9,6 +9,7 @@ int game(int maptype)
     int score;
     int *pla[13];
     map.number=form_matrix(ROWSIZE,COLSIZE);
+    map1.number=form_matrix(ROWSIZE,COLSIZE);
     map2.number=form_matrix(ROWSIZE,COLSIZE);
     map3.number=form_matrix(ROWSIZE,COLSIZE);
     map_store1.number=form_matrix(ROWSIZE,COLSIZE);
@@ -19,7 +20,9 @@ int game(int maptype)
     //value2(map2.number,ROWSIZE,COLSIZE);
     //value3(map3.number,ROWSIZE,COLSIZE);
     value_cord(map.cordx,map.cordy,ROWSIZE,COLSIZE);
-    getmap(map.number,maptype,1);
+    printf("\nmapetype%d\n",maptype);
+    getmap(map.number,maptype,0);
+    getmap(map1.number,maptype,1);
     getmap(map2.number,maptype,2);
     getmap(map3.number,maptype,3);
     getsta(pla,maptype);
@@ -212,7 +215,8 @@ int game(int maptype)
                     {
                         savload(&maptype);
                         printf("maptype %d\n",maptype);
-                        inpmap(map_store1.number,maptype,1);
+                        inpmap(map.number,maptype,0);
+                        inpmap(map1.number,maptype,1);
                         inpmap(map2.number,maptype,2);
                         inpmap(map3.number,maptype,3);
                         inpsta(player,maptype);

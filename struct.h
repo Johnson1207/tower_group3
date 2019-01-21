@@ -56,6 +56,7 @@ typedef struct  line
 } li;
 
 li map;
+li map1;
 li map2;
 li map3;
 li map_store1;
