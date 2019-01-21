@@ -176,7 +176,7 @@ void value_cord(int **cordx,int **cordy,int rows,int cols)
 
 void swit(int **a,int **b,int**c, int k, int l,
           ALLEGRO_BITMAP* key, ALLEGRO_BITMAP* red, ALLEGRO_BITMAP* stone, ALLEGRO_BITMAP* blue,
-          ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
+          ALLEGRO_BITMAP* monster1, ALLEGRO_BITMAP* fight,ALLEGRO_BITMAP* fight14, ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP* sword,
           ALLEGRO_BITMAP* snow, ALLEGRO_BITMAP* beaten, ALLEGRO_BITMAP* defend, ALLEGRO_BITMAP* stair12,
           ALLEGRO_BITMAP* stair21, ALLEGRO_BITMAP* stair23, ALLEGRO_BITMAP* stair32, ALLEGRO_BITMAP* door,
           ALLEGRO_BITMAP* monster2, ALLEGRO_BITMAP* monster3, ALLEGRO_BITMAP* monster4, ALLEGRO_BITMAP* monster5,

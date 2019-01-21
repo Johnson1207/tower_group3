@@ -37,6 +37,7 @@ int game()
     ALLEGRO_BITMAP *stair32 = NULL;//stair from map 3 to 2
     ALLEGRO_BITMAP *monster1 = NULL;
     ALLEGRO_BITMAP *fight = NULL;
+    ALLEGRO_BITMAP* fight14 = NULL;
     ALLEGRO_BITMAP *bitmap_map = NULL;
     ALLEGRO_BITMAP *monster2 = NULL;
     ALLEGRO_BITMAP *monster3 = NULL;
@@ -100,6 +101,7 @@ int game()
     monster4= al_load_bitmap("./boss2.png");
     monster5= al_load_bitmap("./boss3.png");
     fight= al_load_bitmap("./fight.png");
+    fight14= al_load_bitmap("./fight14.png");
     bitmap_map = al_load_bitmap("./ice.jpg");
     gameover = al_load_bitmap("./gameover.jpg");
     youwin = al_load_bitmap("./youwin.jpg");
@@ -219,7 +221,7 @@ int game()
             for(l=0; l<COLSIZE; l++)
             {
                 swit(map.number, map.cordx, map.cordy, k, l,
-                     key, red, stone, blue, monster1, fight, pongFont,
+                     key, red, stone, blue, monster1, fight,fight14, pongFont,
                      sword, snow, beaten, defend, stair12, stair21, stair23,
                      stair32, door, monster2, monster3, monster4, monster5,
                      mbeat,mdoor,mdrug,mkey,mshield,msnow,msword,
@@ -303,6 +305,7 @@ int game()
     al_destroy_bitmap(monster4);
     al_destroy_bitmap(monster5);
     al_destroy_bitmap(fight);
+    al_destroy_bitmap(fight14);
     al_destroy_bitmap(bitmap_map);
     al_destroy_bitmap(gameover);
     al_destroy_bitmap(youwin);
