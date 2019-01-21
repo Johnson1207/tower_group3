@@ -744,7 +744,7 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
 
 
     al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700, 20, -1, " LEVEL %d", player.level);
-    al_draw_textf( pongFont, al_map_rgb(255, 0,100), 700, 40, -1, " Life: %d", player.life);
+    al_draw_textf( pongFont, al_map_rgb(255, 0,100), 700, 40, -1, " HP: %d", player.life);
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 700,40, -1, " energy: %d", player.energy);
     al_draw_textf( pongFont, al_map_rgb(0, 150, 255), 700, 60, -1, " ATK: %d", player.attack);
     al_draw_textf( pongFont, al_map_rgb(0, 255, 500), 700, 80, -1, " DEF: %d", player.def);
@@ -757,10 +757,12 @@ void print(ALLEGRO_FONT* pongFont, ALLEGRO_BITMAP *pg)
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,120, -1, " Win: %d", player.win);
     //al_draw_textf( pongFont, al_map_rgb(0, 0, 0), 700,140,-1, " Lose: %d", player.lose);
 
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 700, -1, "When you move,you will lose your energy.If energy=0,you can't move");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 720, -1, "In the fight,You are the first to attack.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 740, -1, " And if you don't finish the fight,you can't move.");
-    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 760, -1, "Attack PRESS Z");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 670, -1, "In the fight,You are the first to attack.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 690, -1, " And if you don't finish the fight,you can't move.");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 710, -1, "Attack PRESS  'Z'");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 730, -1, "Save game PRESS  'Enter'");
+    al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 350, 750, -1, "Close game PRESS  'ESC'");
+    al_draw_textf( pongFont, al_map_rgb(255, 150, 150), 370, 775, -1, "Snow:ATK + 10  Sword:ATK + 50  Shield:DEF + 10  Red med:HP + 30  Blue med:HP + 50");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 600, -1, "use red drug (life+1) PRESS R"  );
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200,620, -1, "use blue drug (energy+1) PRESS B ");
     //al_draw_textf( pongFont, al_map_rgb(255, 255, 255), 200, 640, -1, "USE sword (ATK+2) PRESS S ");
@@ -776,52 +778,52 @@ void fighting(ALLEGRO_BITMAP *fight1, ALLEGRO_BITMAP *fight2, ALLEGRO_BITMAP *fi
             {
             case 1:
                 al_draw_bitmap(fight1, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", girl.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", girl.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330,-1, " %d",girl.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 555, 240, -1, " %d", girl.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 555, 285, -1, " %d", girl.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 355, 240, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 355, 285, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 555, 330,-1, " %d",girl.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 355, 330, -1, " %d", player.def);
                 break;
 
             case 2:
                 al_draw_bitmap(fight2, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", bat.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", bat.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",bat.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 210, -1, " %d", bat.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 550, 275, -1, " %d", bat.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 210, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 350, 275, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 345,-1, " %d",bat.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 345, -1, " %d", player.def);
                 break;
 
             case 3:
                 al_draw_bitmap(fight3, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", skull.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", skull.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 220, -1, " %d", skull.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 550, 275, -1, " %d", skull.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 220, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 350, 275, -1, " %d", player.attack);
                 al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",skull.def);
                 al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
                 break;
 
             case 4:
                 al_draw_bitmap(fight4, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", boss2.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", boss2.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 220, -1, " %d", boss2.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 550, 275, -1, " %d", boss2.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 220, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 350, 275, -1, " %d", player.attack);
                 al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",boss2.def);
                 al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
                 break;
 
             case 5:
                 al_draw_bitmap(fight5, 150, 150, 0);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 550, 230, -1, " %d", boss3.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 550, 280, -1, " %d", boss3.attack);
-                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 350, 230, -1, " %d", player.life);
-                al_draw_textf( pongFont, al_map_rgb(255, 255, 0), 350, 280, -1, " %d", player.attack);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 550, 330,-1, " %d",boss3.def);
-                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 350, 330, -1, " %d", player.def);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 555, 220, -1, " %d", boss3.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 555, 275, -1, " %d", boss3.attack);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 0), 355, 220, -1, " %d", player.life);
+                al_draw_textf( pongFont, al_map_rgb(255, 0, 255), 355, 275, -1, " %d", player.attack);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 555, 330,-1, " %d",boss3.def);
+                al_draw_textf( pongFont, al_map_rgb(0, 0, 255), 355, 330, -1, " %d", player.def);
                 break;
             }
 }
