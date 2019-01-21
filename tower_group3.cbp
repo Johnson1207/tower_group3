@@ -73,10 +73,31 @@
 		<Unit filename="game.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="load.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="mat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mouse.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="name.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="past.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="save.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="struct.h" />
+		<Unit filename="svore.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
