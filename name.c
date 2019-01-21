@@ -9,6 +9,7 @@ int name(it player,int  winlos,int score)
     int x=0,y=0;
     int i=0;
     char nam[20];
+    memset(nam,0,20);
 
     /* pointer to the ball's image bitmap *//* pointer to display */
     ALLEGRO_FONT *pongFont = NULL; /* pointer to Font file */
@@ -47,6 +48,7 @@ int name(it player,int  winlos,int score)
         }
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 200, -1, "Please give your name");
         al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 250, -1, "%s",nam);
+        al_draw_textf( Font, al_map_rgb(255, 255, 255), 340, 300, -1, "PRESS 'Ctrl' to save.");
         //al_get_next_event(event_queue, &events);
         if (!al_is_event_queue_empty(event_queue))
         {
